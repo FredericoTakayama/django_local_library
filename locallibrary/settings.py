@@ -131,3 +131,8 @@ LOGIN_REDIRECT_URL = '/'
 # to enabled email response in console, since it doesn't send email yet
 # to send email its necessary that this website support emails
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
